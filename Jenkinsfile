@@ -18,5 +18,22 @@ pipeline{
                 }
             }
         }
+        stage("Build image"){
+            steps{
+                echo "========executing Build image========"
+                powershell 'docker build -f Dockerfile.dev .'
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========Build image executed successfully========"
+                }
+                failure{
+                    echo "========Build image execution failed========"
+                }
+            }
+        }
     }
 }
