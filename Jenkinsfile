@@ -21,7 +21,7 @@ pipeline{
         stage("Build image"){
             steps{
                 echo "========executing Build image========"
-                powershell 'docker build -f Dockerfile.dev .'
+                powershell 'docker build -f Dockerfile.dev -t dimasandriyan/frontend .'
             }
             post{
                 always{
