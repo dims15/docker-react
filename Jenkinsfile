@@ -21,7 +21,8 @@ pipeline{
         stage("Build image"){
             steps{
                 echo "========executing Build image========"
-                step([$class: 'DockerBuilderPublisher', cleanImages: false, cleanupWithJenkinsJobDelete: false, cloud: '', dockerFileDirectory: '', fromRegistry: [], pushCredentialsId: '', pushOnSuccess: false, tagsString: 'test-images'])
+'
+                docker.build("dimasandriyan:frontend", "-f Dockerfile.dev .")
             }
             post{
                 always{
