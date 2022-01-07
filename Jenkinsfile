@@ -21,7 +21,7 @@ pipeline{
         stage("Build image"){
             steps{
                 echo "========executing Build image========"
-'
+
                 docker.build("dimasandriyan:frontend", "-f Dockerfile.dev .")
             }
             post{
