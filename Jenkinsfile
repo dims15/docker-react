@@ -4,7 +4,7 @@ pipeline{
         stage("Checkout"){
             steps{
                 echo "========executing Checkout========"
-                git credentialsId: 'd328bd89-83d2-4b9a-917e-e9cd613222c1', url: 'https://github.com/dims15/docker-react.git'
+                git credentialsId: '8446e77e-2391-479c-b243-e18c824d7b5f', url: 'https://github.com/dims15/docker-react.git'
             }
             post{
                 always{
@@ -21,7 +21,7 @@ pipeline{
         stage("Build image"){
             steps{
                 echo "========executing Build image========"
-                powershell 'docker build -f Dockerfile.dev -t dimasandriyan/frontend .'
+                step([$class: 'DockerBuilderPublisher', cleanImages: false, cleanupWithJenkinsJobDelete: false, cloud: '', dockerFileDirectory: '', fromRegistry: [], pushCredentialsId: '', pushOnSuccess: false, tagsString: 'test-images'])
             }
             post{
                 always{
